@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {fetchData, fetchError, receiveData} from '../actions/data-fetch-actions';
 import App from './App';
 
@@ -25,7 +26,9 @@ class AppContainer extends Component {
   }
 
   render() {
-    return <App data={this.props.data}/>;
+    return <MuiThemeProvider>
+      <App data={this.props.data}/>
+    </MuiThemeProvider>
   }
 }
 
