@@ -6,7 +6,7 @@ class Broker extends Component {
   render() {
     return (
         <div className="broker">
-          Brokerul
+          <h2>Broker</h2>
         </div>
     );
   }
