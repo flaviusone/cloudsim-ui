@@ -80,12 +80,12 @@ export default {
         {
           "id": 1,
           "mips": 1000,
-          "status": 1
+          "status": 2
         },
         {
           "id": 2,
           "mips": 1000,
-          "status": 1
+          "status": 3
         },
         {
           "id": 3,
