@@ -1,4 +1,5 @@
 import * as types from '../actions/action-types';
+import appFixture from '../fixtures/base.js';
 
 const initialState = {
     data: {},
