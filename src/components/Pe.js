@@ -14,7 +14,7 @@ class Pe extends Component {
 
     return (
         <div className={peClasses}>
-          <h4>Pe {this.props.data.id}</h4>
+          <h4>Pe</h4>
         </div>
     );
   }

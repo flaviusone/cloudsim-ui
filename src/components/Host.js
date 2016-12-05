@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Pe from './Pe';
+import Vm from './Vm';
 
 import _ from 'lodash';
 
@@ -31,8 +32,12 @@ class Host extends Component {
   }
 
   _renderVmList() {
-    return <div className="vm--container">
+    const {vmList} = this.props.data;
 
+    return <div className="vm-container">
+      {vmList.map(vm => {
+        return <Vm key={vm.uid} data={vm} />
+      })}
     </div>;
   }
 }
