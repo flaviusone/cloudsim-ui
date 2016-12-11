@@ -14,7 +14,7 @@ class Pe extends Component {
     });
 
     return (
-        <div className={peClasses}  data-tip data-for={`pe-${id}`} data-event='click'>
+        <div className={peClasses} data-tip data-for={`pe-${id}`} data-event='click'>
           <h4>Pe</h4>
           {this._renderTooltip()}
         </div>
