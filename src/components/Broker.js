@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cloudlet from './Cloudlet';
+import _ from 'lodash';
 
 import './Broker.css';
 
@@ -8,7 +9,6 @@ class Broker extends Component {
     const {
       id,
       cloudletList,
-      cloudletSubmittedList,
       cloudletReceivedList} = this.props.data;
 
     return (
@@ -17,11 +17,23 @@ class Broker extends Component {
           <h3>Cloudlet list</h3>
           {this._renderCloudletList(cloudletList)}
           <h3>Cloudlet submitted list</h3>
-          {this._renderCloudletList(cloudletSubmittedList)}
+          {this._renderCloudletList(this._removeSubmittedCloudletsThatFinished())}
           <h3>Cloudlet received list</h3>
           {this._renderCloudletList(cloudletReceivedList)}
         </div>
     );
+  }
+
+
+  _removeSubmittedCloudletsThatFinished() {
+    const {
+      cloudletSubmittedList,
+      cloudletReceivedList
+    } = this.props.data;
+
+    return _.filter(cloudletSubmittedList, cloudlet => {
+      return !_.some(cloudletReceivedList, cloudlet);
+    });
   }
 
   _renderCloudletList(cloudletList) {
