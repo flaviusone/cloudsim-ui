@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactTooltip from 'react-tooltip';
 import Pe from './Pe';
 import Vm from './Vm';
 
@@ -7,14 +8,37 @@ import _ from 'lodash';
 import './Host.css';
 
 class Host extends Component {
+  constructor () {
+    super()
+    this.state = {
+      popOverOpen: false
+    }
+  }
+
   render() {
+    const {id} = this.props.data;
+
     return (
-      <div className="host">
-        <h3>Host {this.props.data.id}</h3>
+      <div className="host" data-tip data-for={`host-${id}`}>
+        <h3>Host {id}</h3>
         {this._renderAvailablePe()}
         {this._renderVmList()}
+        {this._renderTooltip()}
       </div>
     );
+  }
+
+  _renderTooltip() {
+    const {id, storage, ram, bw, datacenter} = this.props.data;
+
+    return <ReactTooltip id={`host-${id}`} place="right" type="info" effect="solid"
+                      class='tooltip'>
+      <div>Id: {id}</div>
+      <div>Storage: {storage}</div>
+      <div>RAM: {ram}</div>
+      <div>Bandwidth: {bw}</div>
+      <div>Datacenter: {datacenter}</div>
+    </ReactTooltip>
   }
 
   _renderAvailablePe() {
