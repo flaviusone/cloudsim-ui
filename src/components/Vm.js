@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactTooltip from 'react-tooltip';
 import Pe from './Pe';
 import _ from 'lodash';
 
@@ -6,11 +7,12 @@ import './Vm.css';
 
 class Vm extends Component {
   render() {
-
+    const {id} = this.props.data;
     return (
-        <div className="vm">
-          <h4>Vm {this.props.data.id}</h4>
+        <div className="vm" data-tip data-for={`vm-${id}`} data-event='click'>
+          <h4>Vm {id}</h4>
           {this._renderBusyPe()}
+          {this._renderTooltip()}
         </div>
     );
   }
@@ -28,6 +30,41 @@ class Vm extends Component {
         return <Pe key={pe.id} data={pe}/>
       })}
     </div>
+  }
+
+_renderTooltip() {
+    const {
+      id,
+      userId,
+      uid,
+      size,
+      mips,
+      numberOfPes,
+      ram,
+      bw,
+      vmm,
+      inMigration,
+      currentAllocatedSize,
+      currentAllocatedRam,
+      currentAllocatedBw,
+    } = this.props.data;
+
+    return <ReactTooltip id={`vm-${id}`} place="right" type="info" effect="solid"
+                      class='tooltip'  globalEventOff='mousemove'>
+      <div>Id: {id}</div>
+      <div>User Id: {userId}</div>
+      <div>Unique Id: {uid}</div>
+      <div>Size: {size}</div>
+      <div>Mips: {mips}</div>
+      <div>Number of req pe: {numberOfPes}</div>
+      <div>RAM: {ram}</div>
+      <div>Bandwidth: {bw}</div>
+      <div>Vmm: {vmm}</div>
+      <div>In migration:: {inMigration}</div>
+      <div>Allocated Size: {currentAllocatedSize}</div>
+      <div>Allocated Ram: {currentAllocatedRam}</div>
+      <div>Allocated Bw: {currentAllocatedBw}</div>
+    </ReactTooltip>
   }
 }
 
