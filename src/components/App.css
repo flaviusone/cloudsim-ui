@@ -30,6 +30,15 @@
   justify-content: center;
 }
 
+.brokers-container {
+  width: 40%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .tooltip {
   text-align: left;
 }

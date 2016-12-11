@@ -6,13 +6,14 @@ import './Broker.css';
 class Broker extends Component {
   render() {
     const {
+      id,
       cloudletList,
       cloudletSubmittedList,
       cloudletReceivedList} = this.props.data;
 
     return (
         <div className="broker">
-          <h2>Broker</h2>
+          <h2>Broker {id || null}</h2>
           <h3>Cloudlet list</h3>
           {this._renderCloudletList(cloudletList)}
           <h3>Cloudlet submitted list</h3>
@@ -30,7 +31,8 @@ class Broker extends Component {
 
     return <div className="cloudlet-container">
       {cloudletList.map(cloudlet => {
-        return <Cloudlet key={cloudlet.cloudletId} data={cloudlet} />
+        return <Cloudlet key={cloudlet.cloudletId} data={cloudlet}
+                         brokerId={this.props.data.id} />
       })}
     </div>;
   }

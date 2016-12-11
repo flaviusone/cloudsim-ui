@@ -7,7 +7,7 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const {dataCenterList, broker} = this.props.data
+    const {dataCenterList, brokerList} = this.props.data
 
     return (
         <div className="app">
@@ -18,10 +18,21 @@ class App extends Component {
             <div className="datacenters-container">
               {this._renderDataCenters(dataCenterList)}
             </div>
-            <Broker data={broker}/>
+            <div className="brokers-container">
+              {this._renderBrokers(brokerList)}
+            </div>
           </div>
         </div>
     );
+  }
+
+  _renderBrokers(brokerList) {
+    if(!brokerList) {
+      return null;
+    }
+    return brokerList.map(broker => {
+      return <Broker key={broker.id} data={broker}/>
+    })
   }
 
   _renderDataCenters(dataCenters) {

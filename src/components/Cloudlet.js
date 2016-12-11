@@ -5,9 +5,11 @@ import './Cloudlet.css';
 class Cloudlet extends Component {
   render() {
     const {cloudletId, status} = this.props.data;
+    const {brokerId} = this.props;
 
     return (
-        <div className="cloudlet" data-tip data-for={`cloudlet-${cloudletId}`} data-event='click'>
+        <div className="cloudlet" data-tip
+             data-for={`cloudlet-${cloudletId}-${brokerId}`} data-event='click'>
           <h4>Cloudlet - {cloudletId}</h4>
           {status}
           {this._renderTooltip()}
@@ -26,9 +28,11 @@ class Cloudlet extends Component {
       execStartTime,
       finishTime
     } = this.props.data;
+    const {brokerId} = this.props;
 
-    return <ReactTooltip id={`cloudlet-${cloudletId}`} place="right" type="info" effect="solid"
-                      class='tooltip'  globalEventOff='mousemove'>
+    return <ReactTooltip id={`cloudlet-${cloudletId}-${brokerId}`} place="right"
+                         type="info" effect="solid" class='tooltip'
+                         globalEventOff='mousemove'>
       <div>Id: {cloudletId}</div>
       <div>Length: {cloudletLength}</div>
       <div>FileSize: {cloudletFileSize}</div>
