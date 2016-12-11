@@ -6,6 +6,7 @@ import './Pe.css';
 class Pe extends Component {
   render() {
     const {status, id} = this.props.data;
+    const {hostId} = this.props;
     const peClasses = classNames({
       'pe': true,
       'is-available': status === 1,
@@ -14,7 +15,7 @@ class Pe extends Component {
     });
 
     return (
-        <div className={peClasses} data-tip data-for={`pe-${id}`} data-event='click'>
+        <div className={peClasses} data-tip data-for={`pe-${id}-${hostId}`} data-event='click'>
           <h4>Pe</h4>
           {this._renderTooltip()}
         </div>
@@ -23,9 +24,11 @@ class Pe extends Component {
 
   _renderTooltip() {
     const {id, mips, status} = this.props.data;
+    const {hostId} = this.props;
 
-    return <ReactTooltip id={`pe-${id}`} place="right" type="info" effect="solid"
-                      class='tooltip'  globalEventOff='mousemove'>
+    return <ReactTooltip id={`pe-${id}-${hostId}`} place="right"
+                         type="info" effect="solid"
+                         class='tooltip'  globalEventOff='mousemove'>
       <div>Id: {id}</div>
       <div>Mips: {mips}</div>
       <div>Status: {status}</div>

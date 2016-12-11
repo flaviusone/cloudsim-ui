@@ -22,7 +22,7 @@ class AppContainer extends Component {
   }
 
   startPoll() {
-    this.timeout = setTimeout(() => this.props.dataFetch(), 1000);
+    this.timeout = setTimeout(() => this.props.dataFetch(), 500);
   }
 
   render() {

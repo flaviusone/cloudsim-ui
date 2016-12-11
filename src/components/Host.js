@@ -16,10 +16,11 @@ class Host extends Component {
   }
 
   render() {
-    const {id} = this.props.data;
+    const {id, datacenter} = this.props.data;
 
     return (
-      <div className="host" data-tip data-for={`host-${id}`} data-event='click'>
+      <div className="host" data-tip data-for={`host-${id}-${datacenter}`}
+           data-event='click'>
         <h3>Host {id}</h3>
         {this._renderAvailablePe()}
         {this._renderVmList()}
@@ -31,8 +32,9 @@ class Host extends Component {
   _renderTooltip() {
     const {id, storage, ram, bw, datacenter} = this.props.data;
 
-    return <ReactTooltip id={`host-${id}`} place="right" type="info" effect="solid"
-                      class='tooltip' globalEventOff='mousemove'>
+    return <ReactTooltip id={`host-${id}-${datacenter}`} place="right"
+                         type="info" effect="solid"
+                         class='tooltip' globalEventOff='mousemove'>
       <div>Id: {id}</div>
       <div>Storage: {storage}</div>
       <div>RAM: {ram}</div>
@@ -42,7 +44,9 @@ class Host extends Component {
   }
 
   _renderAvailablePe() {
-    const {peList} = this.props.data;
+    const {id, peList, datacenter} = this.props.data;
+    // Generate unique host id
+    const hostId = `host-${id}-${datacenter}`;
     const availablePes = _.filter(peList, pe => {
       // Pe not BUSY
       return pe.status !== 2;
@@ -50,17 +54,18 @@ class Host extends Component {
 
     return <div className="available-pe-container">
       {availablePes.map(pe => {
-        return <Pe key={pe.id} data={pe}/>
+        return <Pe key={pe.id} data={pe} hostId={hostId}/>
       })}
     </div>
   }
 
   _renderVmList() {
     const {vmList} = this.props.data;
+    const {hostId} = this.props;
 
     return <div className="vm-container">
       {vmList.map(vm => {
-        return <Vm key={vm.uid} data={vm} />
+        return <Vm key={vm.uid} data={vm} hostId={hostId} />
       })}
     </div>;
   }

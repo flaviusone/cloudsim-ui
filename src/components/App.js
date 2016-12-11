@@ -7,19 +7,30 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const {dataCenter, broker} = this.props.data
+    const {dataCenterList, broker} = this.props.data
 
     return (
         <div className="app">
           <AppBar
-            title="cloudsim-ui"
+            title={`cloudsim-ui - clock: ${this.props.data.clock || 0}`}
             showMenuIconButton={false}/>
           <div className="content-container">
-            <DataCenter data={dataCenter}/>
+            <div className="datacenters-container">
+              {this._renderDataCenters(dataCenterList)}
+            </div>
             <Broker data={broker}/>
           </div>
         </div>
     );
+  }
+
+  _renderDataCenters(dataCenters) {
+    if(!dataCenters) {
+      return null;
+    }
+    return dataCenters.map(dataCenter => {
+      return <DataCenter key={dataCenter.name} data={dataCenter}/>
+    })
   }
 }
 

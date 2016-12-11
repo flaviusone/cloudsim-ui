@@ -8,8 +8,11 @@ import './Vm.css';
 class Vm extends Component {
   render() {
     const {id} = this.props.data;
+    const {hostId} = this.props;
+
     return (
-        <div className="vm" data-tip data-for={`vm-${id}`} data-event='click'>
+        <div className="vm" data-tip data-for={`vm-${id}-${hostId}`}
+             data-event='click'>
           <h4>Vm {id}</h4>
           {this._renderBusyPe()}
           {this._renderTooltip()}
@@ -48,8 +51,9 @@ _renderTooltip() {
       currentAllocatedRam,
       currentAllocatedBw,
     } = this.props.data;
+    const {hostId} = this.props;
 
-    return <ReactTooltip id={`vm-${id}`} place="right" type="info" effect="solid"
+    return <ReactTooltip id={`vm-${id}-${hostId}`} place="right" type="info" effect="solid"
                       class='tooltip'  globalEventOff='mousemove'>
       <div>Id: {id}</div>
       <div>User Id: {userId}</div>

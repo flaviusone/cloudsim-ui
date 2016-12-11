@@ -21,6 +21,20 @@
 }
 
 
+.datacenters-container {
+  width: 60%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .tooltip {
   text-align: left;
+}
+
+.clock-label {
+  color: white;
+  vertical-align: middle;
 }
