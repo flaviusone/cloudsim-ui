@@ -19,7 +19,7 @@ class Host extends Component {
     const {id} = this.props.data;
 
     return (
-      <div className="host" data-tip data-for={`host-${id}`}>
+      <div className="host" data-tip data-for={`host-${id}`} data-event='click'>
         <h3>Host {id}</h3>
         {this._renderAvailablePe()}
         {this._renderVmList()}
@@ -32,7 +32,7 @@ class Host extends Component {
     const {id, storage, ram, bw, datacenter} = this.props.data;
 
     return <ReactTooltip id={`host-${id}`} place="right" type="info" effect="solid"
-                      class='tooltip'>
+                      class='tooltip' globalEventOff='mousemove'>
       <div>Id: {id}</div>
       <div>Storage: {storage}</div>
       <div>RAM: {ram}</div>
