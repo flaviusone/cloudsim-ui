@@ -9,7 +9,7 @@ class DataCenter extends Component {
 
     return (
         <div className="data-center">
-          <h2>{name}</h2>
+          <h2>Datacenter - {name}</h2>
           {this._renderHostsList()}
         </div>
     );

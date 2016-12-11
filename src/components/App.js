@@ -7,7 +7,8 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const {dataCenter} = this.props.data
+    const {dataCenter, broker} = this.props.data
+
     return (
         <div className="app">
           <AppBar
@@ -15,7 +16,7 @@ class App extends Component {
             showMenuIconButton={false}/>
           <div className="content-container">
             <DataCenter data={dataCenter}/>
-            <Broker data={dataCenter}/>
+            <Broker data={broker}/>
           </div>
         </div>
     );
