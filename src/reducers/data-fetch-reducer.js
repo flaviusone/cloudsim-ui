@@ -1,10 +1,17 @@
 import * as types from '../actions/action-types';
-import appFixture from '../fixtures/base.js';
+// import appFixture from '../fixtures/base.js';
 
 const initialState = {
-    data: {},
+    data: {
+      dataCenter: {
+        hosts: []
+      },
+      broker: {}
+    },
     isFetching: false
 };
+
+// const initialState = appFixture;
 
 export default (state = initialState, action) => {
   switch (action.type) {
