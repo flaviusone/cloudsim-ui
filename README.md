@@ -1,6 +1,8 @@
 # cloudsim-ui
 Custom implementation of a UI for cloudsim
 
+You will need the Java files from [cloudsim-backend](https://github.com/flaviusone/cloudsim-backend).
+
 Installation:
 ```js
 npm install
