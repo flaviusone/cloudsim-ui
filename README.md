@@ -1,5 +1,5 @@
 # cloudsim-ui
-Custom implementation of a UI for cloudsim
+Custom implementation of a UI for cloudsim (https://github.com/Cloudslab/cloudsim)
 
 You will need the Java files from [cloudsim-backend](https://github.com/flaviusone/cloudsim-backend).
 
